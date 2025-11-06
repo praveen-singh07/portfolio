@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praveen | Futuristic Portfolio</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #000;
+    color: #cf385d;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ==== NAVBAR ==== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 1000;
+  }
+
+  nav h1 {
+    font-size: 1.5rem;
+    color: #ffeb3b;
+    letter-spacing: 2px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #cf385d;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    color: #ffeb3b;
+  }
+
+  /* ==== BUBBLE BACKGROUND ==== */
+  .bubble {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255,255,0,0.6) 0%, rgba(255,255,0,0.1) 80%);
+    border-radius: 50%;
+    animation: float 12s infinite ease-in-out;
+    z-index: 0;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    50% { transform: translateY(-100px) scale(1.1); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 0.8; }
+  }
+
+  /* ==== HERO SECTION ==== */
+  header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  header h1 {
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px #cf385d;
+  }
+
+  header p {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    color: #ffeb3b;
+  }
+
+  header .btn {
+    margin-top: 30px;
+    padding: 12px 25px;
+    background: #ffeb3b;
+    color: #000;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+
+  header .btn:hover {
+    background: #cf385d;
+    color: #fff;
+  }
+
+  /* ==== SECTION STYLES ==== */
+  section {
+    min-height: 100vh;
+    padding: 100px 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .image-section img {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 6px dotted #ffeb3b;
+    box-shadow: 0 0 30px #ffeb3b88;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .image-section img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #ffeb3b;
+  }
+
+  .about, .skills, .projects, .contact {
+    text-align: center;
+  }
+
+  .about h2, .skills h2, .projects h2, .contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #cf385d;
+    text-shadow: 0 0 15px #cf385d;
+  }
+
+  .about p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #ffeb3b;
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  /* ==== SKILLS ==== */
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .skill {
+    background: #111;
+    border: 2px solid #ffeb3b;
+    padding: 20px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #cf385d;
+    box-shadow: 0 0 10px #ffeb3b55;
+    transition: 0.3s;
+  }
+
+  .skill:hover {
+    background: #ffeb3b;
+    color: #000;
+    box-shadow: 0 0 25px #ffeb3b;
+  }
+
+  /* ==== PROJECTS ==== */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .project-card {
+    background: #111;
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid #ffeb3b;
+    color: #ffeb3b;
+    transition: 0.4s;
+    box-shadow: 0 0 20px #000;
+  }
+
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #ffeb3b55;
+  }
+
+  /* ==== CONTACT ==== */
+  .contact p {
+    color: #ffeb3b;
+    margin-bottom: 20px;
+  }
+
+  .contact a {
+    color: #cf385d;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .contact a:hover {
+    color: #ffeb3b;
+  }
+
+  /* ==== SCROLL ANIMATION ==== */
+  .hidden {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1s ease;
+  }
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ==== FOOTER ==== */
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: #111;
+    color: #cf385d;
+    letter-spacing: 1px;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- FLOATING BUBBLES -->
+  <div class="bubble" style="width:100px;height:100px;top:15%;left:20%;animation-delay:0s;"></div>
+  <div class="bubble" style="width:140px;height:140px;top:65%;left:75%;animation-delay:2s;"></div>
+  <div class="bubble" style="width:60px;height:60px;top:40%;left:90%;animation-delay:3s;"></div>
+  <div class="bubble" style="width:90px;height:90px;top:80%;left:15%;animation-delay:1s;"></div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>Praveen.dev</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hidden">
+    <h1>Hi, I'm Praveen Singh</h1>
+    <p>BCA Student | Future DevOps Engineer | Cloud Architect in Making</p>
+    <a href="#projects" class="btn">Explore My Work</a>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="about hidden">
+    <h2>About Me</h2>
+    <div class="image-section">
+      <img src="https://via.placeholder.com/250" alt="Praveen Image">
+    </div>
+    <p>
+      I'm a tech enthusiast pursuing BCA, passionate about automation, scalability, and futuristic
+      technologies like Electric Vehicles, Cloud Computing, and IoT.  
+      My goal is to bridge the gap between software and hardware using DevOps principles and data-driven solutions.  
+      I love experimenting with Linux, WSL, Git, and Cloud environments while continuously upskilling for a
+      smarter, more sustainable digital future.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills hidden">
+    <h2>Tech Stack & Skills</h2>
+    <div class="skills-list">
+      <div class="skill">Linux / Ubuntu</div>
+      <div class="skill">Git & GitHub</div>
+      <div class="skill">Cloud Computing</div>
+      <div class="skill">DevOps Tools (Docker, Jenkins, CI/CD)</div>
+      <div class="skill">Shell Scripting</div>
+      <div class="skill">SQL Server</div>
+      <div class="skill">VB.NET & Windows Forms</div>
+      <div class="skill">C++ & OOPs</div>
+      <div class="skill">Networking Concepts</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects hidden">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Doctors Management System</h3>
+        <p>Built using VB.NET and SQL Server for managing hospital doctor records efficiently.  
+        Integrated CRUD operations, authentication, and modern UI for seamless data management.</p>
+      </div>
+      <div class="project-card">
+        <h3>Student Record Manager</h3>
+        <p>A Windows Forms Application developed to store, update, and manage student data using
+        structured SQL databases with secure user login.</p>
+      </div>
+      <div class="project-card">
+        <h3>DevOps Self-Test Platform</h3>
+        <p>A command-line based learning tracker that helps practice Git, Linux, and Cloud commands
+        with automation and daily progress tracking.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact hidden">
+    <h2>Contact Me</h2>
+    <p>Want to collaborate or just say hi?</p>
+    <p>📧 Email: <a href="mailto:praveensingh@email.com">praveensingh@email.com</a></p>
+    <p>🌐 GitHub: <a href="https://github.com/YourUsername" target="_blank">github.com/YourUsername</a></p>
+  </section>
+
+  <footer>© 2025 Praveen Singh — Designed with 💛 futuristic vibes</footer>
+
+  <script>
+    // Scroll Animation
+    const hiddenElements = document.querySelectorAll('.hidden');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    });
+    hiddenElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
